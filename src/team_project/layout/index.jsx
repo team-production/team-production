@@ -24,12 +24,12 @@ export default class index extends Component {
         {/*导航部分 */}
         <nav className="wrap-nav">
           <Tabs tabBarExtraContent={operations}>
-            <TabPane tab="首页" key="1">
+            {/* <TabPane tab="首页" key="1">
               <TypeScript />
-            </TabPane>
-            <TabPane tab="CSS" key="2">
+            </TabPane> */}
+            {/* <TabPane tab="CSS" key="2">
               <CssPage />
-            </TabPane>
+            </TabPane> */}
             <TabPane tab="JS" key="3">
               <JsPage />
             </TabPane>
@@ -39,9 +39,9 @@ export default class index extends Component {
             <TabPane tab="Vue" key="5">
               <VuePage />
             </TabPane>
-            <TabPane tab="Ul" key="6">
+            {/* <TabPane tab="Ul" key="6">
               <UlPage />
-            </TabPane>
+            </TabPane> */}
             <TabPane tab="React" key="7">
               <ReactPage />
             </TabPane>
