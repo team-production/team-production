@@ -3,9 +3,9 @@ import './index.scss'
 import HtmlPage from '../htmlPage/index'
 import Home from '../home/index'
 import JsPage from '../jsPage/index'
-import ReactPage from '../reactPage/index'
+// import ReactPage from '../reactPage/index'
 import VuePage from '../vuePage/index'
-
+import ReactPage from '../reactPage/index'
 // 模板文件
 import { Tabs, Button } from 'antd'
 const { TabPane } = Tabs
@@ -66,6 +66,9 @@ export default class index extends Component {
             </TabPane>
             <TabPane tab="HTML" key="HTML">
               <HtmlPage />
+            </TabPane>
+            <TabPane tab="react" key="react">
+              <ReactPage />
             </TabPane>
           </Tabs>
         </nav>
