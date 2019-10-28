@@ -1,0 +1,38 @@
+.login {
+  width: 460px;
+  height: 375px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -230px;
+  margin-top: -187.5px;
+  border-radius: 10px;
+  h2 {
+    font-size: 35px;
+    font-weight: inherit;
+  }
+
+  form {
+    width: 310px;
+    height: 267px;
+    margin: 0 auto;
+    label {
+      display: block;
+    }
+    .wrap-form-treaty {
+      display: flex;
+      justify-content: space-between;
+    }
+    .wrap-form-btn {
+      width: 100%;
+      > button {
+        width: 100%;
+      }
+    }
+  }
+}

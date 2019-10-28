@@ -1,21 +1,43 @@
 import React, { Component } from 'react'
 import './index.scss'
-import HomePage from '../homgPage/index'
 import HtmlPage from '../htmlPage/index'
-import JQueryPage from '../jQueryPage/index'
+import Home from '../home/index'
 import JsPage from '../jsPage/index'
 import ReactPage from '../reactPage/index'
-import UlPage from '../uIPage/index'
 import VuePage from '../vuePage/index'
-import CssPage from '../cssPage/index'
-import TypeScript from '../typeScript/index'
+
 // 模板文件
 import { Tabs, Button } from 'antd'
 const { TabPane } = Tabs
 
-const operations = <Button disabled>登录</Button>
 export default class index extends Component {
+  constructor() {
+    super()
+    this.state = {
+      hash: window.location.hash.slice(1) || 'JS'
+    }
+  }
+
+  // 切换页面
+  togglePage = ({ target }) => {
+    const { innerText } = target
+    this.setState({
+      hash: innerText
+    })
+    window.location.hash = innerText
+  }
+
+  // 退出登陆
+  leaveUser = () => {
+    window.localStorage.setItem('token', '')
+    this.setState({
+      token: ''
+    })
+    this.props.toggle('login')
+  }
   render() {
+    const operations = <Button onClick={this.leaveUser}>退出登录</Button>
+    const { hash } = this.state
     return (
       <div className="wrap">
         <header className="wrap-header">
@@ -23,35 +45,30 @@ export default class index extends Component {
         </header>
         {/*导航部分 */}
         <nav className="wrap-nav">
-          <Tabs tabBarExtraContent={operations}>
-            {/* <TabPane tab="首页" key="1">
-              <TypeScript />
-            </TabPane> */}
-            {/* <TabPane tab="CSS" key="2">
-              <CssPage />
-            </TabPane> */}
-            <TabPane tab="JS" key="3">
+          <Tabs
+            tabBarExtraContent={operations}
+            onTabClick={(value, e) => this.togglePage(e)}
+            activeKey={hash}
+          >
+            {/* 内容部分 */}
+
+            <TabPane tab="home" key="home">
+              <Home />
+            </TabPane>
+            <TabPane tab="JS" key="JS">
               <JsPage />
             </TabPane>
-            <TabPane tab="jQuery" key="4">
-              <JQueryPage />
-            </TabPane>
-            <TabPane tab="Vue" key="5">
+            <TabPane tab="Vue" key="Vue">
               <VuePage />
             </TabPane>
-            {/* <TabPane tab="Ul" key="6">
-              <UlPage />
-            </TabPane> */}
-            <TabPane tab="React" key="7">
+            <TabPane tab="React" key="React">
               <ReactPage />
             </TabPane>
-            <TabPane tab="HTML" key="8">
+            <TabPane tab="HTML" key="HTML">
               <HtmlPage />
             </TabPane>
           </Tabs>
         </nav>
-        {/* 内容部分 */}
-        <main className="wrap-main"></main>
       </div>
     )
   }
